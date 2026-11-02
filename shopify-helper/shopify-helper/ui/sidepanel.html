@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Missing items</title>
+<style>
+  body { font: 13px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 14px; color: #1f2430; }
+  h1 { font-size: 15px; margin: 0 0 10px; }
+  textarea { width: 100%; box-sizing: border-box; height: 200px; padding: 10px; border: 1px solid #d5d9e4; border-radius: 10px; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; resize: vertical; }
+  .bar { display: flex; gap: 8px; margin: 10px 0; flex-wrap: wrap; align-items: center; }
+  button { padding: 8px 12px; border: 0; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; background: #eef0f6; }
+  button.primary { background: #5b6cff; color: #fff; } button.danger { color: #b42318; }
+  .group { margin-top: 12px; font-weight: 600; }
+  .item { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #eef0f6; }
+  .item button { padding: 2px 8px; }
+  .muted { color: #6b7280; font-size: 12px; } a { color: #5b6cff; }
+</style></head>
+<body>
+  <h1>Missing items notepad</h1>
+  <textarea id="text" placeholder="Items you mark as missing appear here..."></textarea>
+  <div class="bar">
+    <button class="primary" id="copy">Copy</button>
+    <button id="reset" hidden>Reset text</button>
+    <button class="danger" id="clear">Clear all</button>
+    <label class="muted"><input type="checkbox" id="order" checked> order numbers</label>
+    <label class="muted"><input type="checkbox" id="sku"> SKU</label>
+  </div>
+  <div class="muted" id="status"></div>
+  <div id="list"></div>
+  <p class="muted"><a href="#" id="opts">Settings</a></p>
+  <script src="sidepanel.js"></script>
+</body></html>

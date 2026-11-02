@@ -1,0 +1,42 @@
+/* First-pass theme. Everything keys off CSS variables, so presets are just variable swaps. */
+body.sh-theme-on {
+  --sh-font: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sh-hover: #f4f6ff;
+  --sh-divider: #eceef3;
+  --sh-shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 4px 14px rgba(16, 24, 40, .05);
+}
+body.sh-theme-on.sh-preset-soft  { --sh-hover: #fbf6ef; --sh-divider: #efe7da; }
+body.sh-theme-on.sh-preset-brand { --sh-hover: color-mix(in srgb, var(--sh-accent) 8%, white); --sh-divider: color-mix(in srgb, var(--sh-accent) 14%, white); }
+
+body.sh-theme-on .Polaris-Text--root { font-family: var(--sh-font); }
+
+body.sh-theme-on .Polaris-ShadowBevel,
+body.sh-theme-on .Polaris-Card,
+body.sh-theme-on .Polaris-LegacyCard {
+  border-radius: var(--sh-radius);
+  box-shadow: var(--sh-shadow);
+}
+
+body.sh-theme-on [role="table"] [role="row"] {
+  border-bottom: 1px solid var(--sh-divider);
+  transition: background-color .12s ease;
+}
+body.sh-theme-on [role="table"] [role="row"]:hover [role="cell"] { background-color: var(--sh-hover); }
+body.sh-theme-on [role="table"] [role="cell"] { padding-block: 4px; }
+body.sh-theme-on [role="table"] a[data-primary-link] { color: var(--sh-accent); font-weight: 600; }
+
+/* Missing-item checkbox on order details (always on, independent of the theme toggle).
+   Sits on the thumbnail's left edge, vertically centered, so the card border can't clip it.
+   Move it with `left` (more negative = further left). */
+input.sh-miss-cb {
+  position: absolute; left: -8px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; margin: 0; z-index: 3; cursor: pointer; accent-color: #5b6cff;
+  background: #fff; border-radius: 4px; box-shadow: 0 0 0 1px rgba(0,0,0,.25), 0 1px 3px rgba(0,0,0,.25);
+}
+
+/* Quantity above 1: black block, slightly larger white number */
+.sh-qty-big { background-color: #000 !important; }
+.sh-qty-big, .sh-qty-big * { color: #fff !important; font-size: 15px !important; font-weight: 600 !important; }
+
+/* Order details: row whose book name is written in a "missing" note */
+.sh-note-match { background-color: var(--sh-missing-color, #ffe58a) !important; border-radius: 8px; }

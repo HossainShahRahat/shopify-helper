@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Shopify Helper",
+  "version": "0.1.0",
+  "description": "Cleaner Shopify admin, note-based row colors, range select, and a missing-items notepad.",
+  "permissions": [
+    "storage",
+    "sidePanel"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open missing-items notepad"
+  },
+  "side_panel": {
+    "default_path": "ui/sidepanel.html"
+  },
+  "options_ui": {
+    "page": "ui/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://admin.shopify.com/store/*"
+      ],
+      "js": [
+        "content/selectors.js",
+        "content/match.js",
+        "content/core.js",
+        "content/orders-list.js",
+        "content/order-detail.js"
+      ],
+      "css": [
+        "content/theme.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
